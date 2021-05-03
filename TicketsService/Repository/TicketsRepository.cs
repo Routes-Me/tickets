@@ -73,12 +73,12 @@ namespace TicketsService.Repository
             };
         }
 
-        public Tickets UpdateTicket(TicketsDto ticketsDto)
+        public Tickets UpdateTicket(string ticketId, TicketsDto ticketsDto)
         {
-            if (ticketsDto == null || ticketsDto.TicketId == null)
+            if (ticketsDto == null || string.IsNullOrEmpty(ticketId))
                 throw new ArgumentNullException(CommonMessage.InvalidData);
 
-            Tickets ticket = _context.Tickets.Where(r => r.TicketId == Obfuscation.Decode(ticketsDto.TicketId)).FirstOrDefault();
+            Tickets ticket = _context.Tickets.Where(r => r.TicketId == Obfuscation.Decode(ticketId)).FirstOrDefault();
             if (ticket == null)
                 throw new ArgumentException(CommonMessage.TicketsNotFound);
 

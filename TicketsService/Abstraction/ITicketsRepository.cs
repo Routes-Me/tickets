@@ -9,7 +9,7 @@ namespace TicketsService.Abstraction
     {
         dynamic GetTickets(string ticketId, Pagination pageInfo);
         Tickets PostTickets(TicketsDto ticketsDto);
-        Tickets UpdateTicket(TicketsDto ticketsDto);
+        Tickets UpdateTicket(string ticketId, TicketsDto ticketsDto);
         Tickets DeleteTickets(string ticketId);
     }
 }

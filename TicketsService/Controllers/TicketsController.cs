@@ -65,12 +65,12 @@ namespace TicketsService.Controllers
         }
 
         [HttpPut]
-        [Route("tickets")]
-        public async Task<IActionResult> UpdateTicket(TicketsDto ticketsDto)
+        [Route("tickets/{ticketId}")]
+        public async Task<IActionResult> UpdateTicket(string ticketId, TicketsDto ticketsDto)
         {
             try
             {
-                Tickets ticket = _TicketsRepository.UpdateTicket(ticketsDto);
+                Tickets ticket = _TicketsRepository.UpdateTicket(ticketId, ticketsDto);
                 _context.Tickets.Update(ticket);
                 await _context.SaveChangesAsync();
             }
